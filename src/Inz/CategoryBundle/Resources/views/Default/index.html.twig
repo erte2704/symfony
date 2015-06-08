@@ -1,0 +1,10 @@
+<section id="category_list">
+	<h3>Kategorie</h3>
+	<div>
+		<ul>
+			{% for element in entities %}
+				<li><a href="{{ path('link_category', { 'alias': element.alias }) }}">{{ element.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

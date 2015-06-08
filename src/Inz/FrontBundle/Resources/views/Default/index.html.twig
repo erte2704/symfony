@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+{% for element in entities %}
+    <article>
+          <header>
+          	<a href="{{ path('link_offer', { 'id': element.id }) }}">{{element.title}}</a>
+          </header>
+        
+          <section id="category">
+          	Kategoria: {{element.category.title}}
+          </section>
+          
+          <section id="introduction">
+     	  	{{element.description}}
+          </section>
+          
+          <footer>
+          	<a href="{{ path('link_offer', { 'id': element.id }) }}">Więcej...</a>
+          </footer>
+    </article>
+{% endfor %}
+
+{% endblock %}
+
+{% block article_bottom %}  
+	{{ render(controller('InzCategoryBundle:Default:index')) }}
+{% endblock %}
+
+

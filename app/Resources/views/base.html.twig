@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Wspomaganie realizacji usług{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+        
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    	<div class="page">
+            <header id="header">Usługi
+                <nav id="menu">                	
+                    <ul class="navigation">
+                        <li>
+                            <a href="/symfony/web/app_dev.php/register">Rejestracja</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('link_home') }}">Home</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>	
+            
+            <section id="content">
+				<h3>
+                    {% block content_title %}Ogłoszenia{% endblock %}
+                </h3>
+                <div class="offer">
+                    {% block content %}      
+                    {% endblock %}
+                </div>
+            </section>
+            </section>
+            
+            <aside id="sidebar">
+            	<div>
+             		{{ render(controller('FOSUserBundle:Security:login')) }}
+             	</div>
+                
+ 			 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div>
+                	<ul>
+                        <li><a href="{{ path('link_add_offer') }}">Dodaj ogłoszenie</a></li>
+                        <li><a href="#">Moje ogłoszenia</a></li>
+                        <li><a href="#">Moje oferty</a></li>
+                        <li><a href="#">Wiadomości</a></li>
+                	</ul>
+                </div>  
+            	{% endif %}
+                    {% block aside_right %}      
+                    {% endblock %}
+            </aside>
+            
+            {% block article_bottom %}  
+            {% endblock %}
+            
+            <footer id="footer">Stopka serwisu</footer>
+        </div>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "MyHelloworldBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h2>Imiona z bazy</h2>
+
+{% for element in entities %}
+	{{element.name}} <br />
+{% endfor %}
+{% endblock %}

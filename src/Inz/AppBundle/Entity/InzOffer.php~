@@ -1,0 +1,94 @@
+<?php
+
+namespace Inz\AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InzOffer
+ *
+ * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_inz_category_idx", columns={"category"}), @ORM\Index(name="fk_inz_offer_inz_user1_idx", columns={"author"})})
+ * @ORM\Entity
+ */
+class InzOffer
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location", type="string", length=255, nullable=true)
+     */
+    private $location;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="days", type="integer", nullable=true)
+     */
+    private $days;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="visit", type="integer", nullable=true)
+     */
+    private $visit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tags", type="string", length=255, nullable=true)
+     */
+    private $tags;
+
+    /**
+     * @var \InzCategory
+     *
+     * @ORM\ManyToOne(targetEntity="InzCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+    /**
+     * @var \InzUser
+     *
+     * @ORM\ManyToOne(targetEntity="InzUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="author", referencedColumnName="id")
+     * })
+     */
+    private $author;
+
+
+}

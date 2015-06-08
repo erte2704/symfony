@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+
+{% block content_title %}
+
+    {{ entity.title }}
+
+{% endblock %}
+
+{% block content %}
+
+    {{ entity.description }}
+	
+    <footer>
+        <div>Ilość dni do końca: {{ entity.days }}</div>
+        <div>Tagi: {{ entity.tags }}</div>
+        <div>Wyświetleń: {{ entity.visit }}</div>
+    </footer>
+{% endblock %}

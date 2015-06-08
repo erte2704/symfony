@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="InzOffer" table="inz_offer">
+    <indexes>
+      <index name="fk_inz_offer_inz_category_idx" columns="category"/>
+      <index name="fk_inz_offer_inz_user1_idx" columns="author"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="100" nullable="true"/>
+    <field name="description" type="text" column="description" nullable="true"/>
+    <field name="date" type="datetime" column="date" nullable="true"/>
+    <field name="location" type="string" column="location" length="255" nullable="true"/>
+    <field name="days" type="integer" column="days" nullable="true"/>
+    <field name="visit" type="integer" column="visit" nullable="true"/>
+    <field name="tags" type="string" column="tags" length="255" nullable="true"/>
+    <many-to-one field="author" target-entity="InzUser">
+      <join-columns>
+        <join-column name="author" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="category" target-entity="InzCategory">
+      <join-columns>
+        <join-column name="category" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
