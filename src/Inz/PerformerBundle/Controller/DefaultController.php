@@ -1,6 +1,6 @@
 <?php
 
-namespace Inz\FrontBundle\Controller;
+namespace Inz\PerformerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,15 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="link_home")
+     * @Route("/hello/{name}")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction($name)
     {
-		$em = $this->getDoctrine()->getEntityManager();
-		$entities = $em->getRepository('InzAppBundle:InzAd')->findAll();
-        return compact('entities');
+        return array('name' => $name);
     }
-	
-
 }

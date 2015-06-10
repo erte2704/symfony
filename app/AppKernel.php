@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Inz\OfferBundle\InzOfferBundle(),
             new Inz\AppBundle\InzAppBundle(),
             new Inz\CategoryBundle\InzCategoryBundle(),
+            new Inz\PerformerBundle\InzPerformerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

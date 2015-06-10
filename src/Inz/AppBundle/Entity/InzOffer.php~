@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * InzOffer
  *
- * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_inz_category_idx", columns={"category"}), @ORM\Index(name="fk_inz_offer_inz_user1_idx", columns={"author"})})
+ * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_performance_inz_performer1_idx", columns={"performer"}), @ORM\Index(name="fk_inz_offer_performance_inz_offer1_idx", columns={"offer"})})
  * @ORM\Entity
  */
 class InzOffer
@@ -22,25 +22,11 @@ class InzOffer
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="title", type="string", length=100, nullable=true)
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
-     */
-    private $date;
+    private $price;
 
     /**
      * @var string
@@ -52,43 +38,36 @@ class InzOffer
     /**
      * @var integer
      *
-     * @ORM\Column(name="days", type="integer", nullable=true)
+     * @ORM\Column(name="accept", type="integer", nullable=true)
      */
-    private $days;
+    private $accept;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="visit", type="integer", nullable=true)
+     * @ORM\Column(name="completed", type="integer", nullable=true)
      */
-    private $visit;
+    private $completed;
 
     /**
-     * @var string
+     * @var \InzAd
      *
-     * @ORM\Column(name="tags", type="string", length=255, nullable=true)
-     */
-    private $tags;
-
-    /**
-     * @var \InzCategory
-     *
-     * @ORM\ManyToOne(targetEntity="InzCategory")
+     * @ORM\ManyToOne(targetEntity="InzAd")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="offer", referencedColumnName="id")
      * })
      */
-    private $category;
+    private $offer;
 
     /**
-     * @var \InzUser
+     * @var \InzPerformer
      *
-     * @ORM\ManyToOne(targetEntity="InzUser")
+     * @ORM\ManyToOne(targetEntity="InzPerformer")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="author", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="performer", referencedColumnName="id")
      * })
      */
-    private $author;
+    private $performer;
 
 
 }

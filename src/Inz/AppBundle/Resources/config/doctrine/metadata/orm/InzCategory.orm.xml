@@ -6,6 +6,6 @@
     </id>
     <field name="title" type="string" column="title" length="45" nullable="true"/>
     <field name="description" type="string" column="description" length="255" nullable="true"/>
-    <field name="alias" type="string" column="alias" length="45" nullable="false"/>
+    <field name="alias" type="string" column="alias" length="45" nullable="true"/>
   </entity>
 </doctrine-mapping>

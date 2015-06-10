@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * InzOffer
  *
- * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_inz_category_idx", columns={"category"}), @ORM\Index(name="fk_inz_offer_inz_user1_idx", columns={"author"})})
+ * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_performance_inz_performer1_idx", columns={"performer"}), @ORM\Index(name="fk_inz_offer_performance_inz_offer1_idx", columns={"offer"})})
  * @ORM\Entity
  */
 class InzOffer
@@ -22,25 +22,11 @@ class InzOffer
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="title", type="string", length=100, nullable=true)
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
-     */
-    private $date;
+    private $price;
 
     /**
      * @var string
@@ -52,43 +38,36 @@ class InzOffer
     /**
      * @var integer
      *
-     * @ORM\Column(name="days", type="integer", nullable=true)
+     * @ORM\Column(name="accept", type="integer", nullable=true)
      */
-    private $days;
+    private $accept;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="visit", type="integer", nullable=true)
+     * @ORM\Column(name="completed", type="integer", nullable=true)
      */
-    private $visit;
+    private $completed;
 
     /**
-     * @var string
+     * @var \InzAd
      *
-     * @ORM\Column(name="tags", type="string", length=255, nullable=true)
-     */
-    private $tags;
-
-    /**
-     * @var \InzCategory
-     *
-     * @ORM\ManyToOne(targetEntity="InzCategory")
+     * @ORM\ManyToOne(targetEntity="InzAd")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="offer", referencedColumnName="id")
      * })
      */
-    private $category;
+    private $offer;
 
     /**
-     * @var \InzUser
+     * @var \InzPerformer
      *
-     * @ORM\ManyToOne(targetEntity="InzUser")
+     * @ORM\ManyToOne(targetEntity="InzPerformer")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="author", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="performer", referencedColumnName="id")
      * })
      */
-    private $author;
+    private $performer;
 
 
 
@@ -103,72 +82,26 @@ class InzOffer
     }
 
     /**
-     * Set title
+     * Set price
      *
-     * @param string $title
+     * @param integer $price
      * @return InzOffer
      */
-    public function setTitle($title)
+    public function setPrice($price)
     {
-        $this->title = $title;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get price
      *
-     * @return string 
+     * @return integer 
      */
-    public function getTitle()
+    public function getPrice()
     {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return InzOffer
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return InzOffer
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
+        return $this->price;
     }
 
     /**
@@ -195,117 +128,94 @@ class InzOffer
     }
 
     /**
-     * Set days
+     * Set accept
      *
-     * @param integer $days
+     * @param integer $accept
      * @return InzOffer
      */
-    public function setDays($days)
+    public function setAccept($accept)
     {
-        $this->days = $days;
+        $this->accept = $accept;
 
         return $this;
     }
 
     /**
-     * Get days
+     * Get accept
      *
      * @return integer 
      */
-    public function getDays()
+    public function getAccept()
     {
-        return $this->days;
+        return $this->accept;
     }
 
     /**
-     * Set visit
+     * Set completed
      *
-     * @param integer $visit
+     * @param integer $completed
      * @return InzOffer
      */
-    public function setVisit($visit)
+    public function setCompleted($completed)
     {
-        $this->visit = $visit;
+        $this->completed = $completed;
 
         return $this;
     }
 
     /**
-     * Get visit
+     * Get completed
      *
      * @return integer 
      */
-    public function getVisit()
+    public function getCompleted()
     {
-        return $this->visit;
+        return $this->completed;
     }
 
     /**
-     * Set tags
+     * Set offer
      *
-     * @param string $tags
+     * @param \Inz\AppBundle\Entity\InzAd $offer
      * @return InzOffer
      */
-    public function setTags($tags)
+    public function setOffer(\Inz\AppBundle\Entity\InzAd $offer = null)
     {
-        $this->tags = $tags;
+        $this->offer = $offer;
 
         return $this;
     }
 
     /**
-     * Get tags
+     * Get offer
      *
-     * @return string 
+     * @return \Inz\AppBundle\Entity\InzAd 
      */
-    public function getTags()
+    public function getOffer()
     {
-        return $this->tags;
+        return $this->offer;
     }
 
     /**
-     * Set category
+     * Set performer
      *
-     * @param \Inz\AppBundle\Entity\InzCategory $category
+     * @param \Inz\AppBundle\Entity\InzPerformer $performer
      * @return InzOffer
      */
-    public function setCategory(\Inz\AppBundle\Entity\InzCategory $category = null)
+    public function setPerformer(\Inz\AppBundle\Entity\InzPerformer $performer = null)
     {
-        $this->category = $category;
+        $this->performer = $performer;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get performer
      *
-     * @return \Inz\AppBundle\Entity\InzCategory 
+     * @return \Inz\AppBundle\Entity\InzPerformer 
      */
-    public function getCategory()
+    public function getPerformer()
     {
-        return $this->category;
-    }
-
-    /**
-     * Set author
-     *
-     * @param \Inz\AppBundle\Entity\InzUser $author
-     * @return InzOffer
-     */
-    public function setAuthor(\Inz\AppBundle\Entity\InzUser $author = null)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return \Inz\AppBundle\Entity\InzUser 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
+        return $this->performer;
     }
 }

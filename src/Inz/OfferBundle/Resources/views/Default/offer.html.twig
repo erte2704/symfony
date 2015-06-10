@@ -17,3 +17,7 @@
         <div>Wyświetleń: {{ entity.visit }}</div>
     </footer>
 {% endblock %}
+
+{% block content_bottom %}  
+	{{ render(controller('InzOfferBundle:Default:performance', {'id' : entity.id})) }}
+{% endblock %}

@@ -38,7 +38,7 @@ class InzCategory
     /**
      * @var string
      *
-     * @ORM\Column(name="alias", type="string", length=45, nullable=false)
+     * @ORM\Column(name="alias", type="string", length=45, nullable=true)
      */
     private $alias;
 

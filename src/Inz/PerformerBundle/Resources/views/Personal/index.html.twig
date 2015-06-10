@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+
+{% block content_title %}
+Wprowadz dane
+{% endblock %}
+
+{% block content %}
+Jeśli chcesz dodawać oferty wykonania usługi uzupełnij swoje dane:
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+{% endblock %}

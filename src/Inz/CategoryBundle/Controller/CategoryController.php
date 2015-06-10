@@ -17,7 +17,7 @@ class CategoryController extends Controller
 		$em = $this->getDoctrine()->getEntityManager();
 		$category = $em->getRepository('InzAppBundle:InzCategory')->findOneByAlias($alias);
 		
-		$entities = $em->getRepository('InzAppBundle:InzOffer')->findByCategory($category);
+		$entities = $em->getRepository('InzAppBundle:InzAd')->findByCategory($category);
 		
         return compact('category','entities');
     }

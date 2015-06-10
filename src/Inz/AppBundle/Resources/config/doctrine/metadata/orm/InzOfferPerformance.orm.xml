@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="InzOfferPerformance" table="inz_offer_performance">
+    <indexes>
+      <index name="fk_inz_offer_performance_inz_performer1_idx" columns="performer"/>
+      <index name="fk_inz_offer_performance_inz_offer1_idx" columns="offer"/>
+    </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="price" type="integer" column="price" nullable="true"/>
     <field name="location" type="string" column="location" length="255" nullable="true"/>
-    <field name="performer" type="integer" column="performer" nullable="true"/>
+    <field name="accept" type="integer" column="accept" nullable="true"/>
+    <field name="completed" type="integer" column="completed" nullable="true"/>
+    <many-to-one field="performer" target-entity="InzPerformer">
+      <join-columns>
+        <join-column name="performer" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="offer" target-entity="InzOffer">
+      <join-columns>
+        <join-column name="offer" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

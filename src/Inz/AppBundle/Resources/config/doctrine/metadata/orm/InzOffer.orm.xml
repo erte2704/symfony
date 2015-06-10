@@ -2,27 +2,24 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="InzOffer" table="inz_offer">
     <indexes>
-      <index name="fk_inz_offer_inz_category_idx" columns="category"/>
-      <index name="fk_inz_offer_inz_user1_idx" columns="author"/>
+      <index name="fk_inz_offer_performance_inz_performer1_idx" columns="performer"/>
+      <index name="fk_inz_offer_performance_inz_offer1_idx" columns="offer"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="title" type="string" column="title" length="100" nullable="true"/>
-    <field name="description" type="text" column="description" nullable="true"/>
-    <field name="date" type="datetime" column="date" nullable="true"/>
+    <field name="price" type="integer" column="price" nullable="true"/>
     <field name="location" type="string" column="location" length="255" nullable="true"/>
-    <field name="days" type="integer" column="days" nullable="true"/>
-    <field name="visit" type="integer" column="visit" nullable="true"/>
-    <field name="tags" type="string" column="tags" length="255" nullable="true"/>
-    <many-to-one field="author" target-entity="InzUser">
+    <field name="accept" type="integer" column="accept" nullable="true"/>
+    <field name="completed" type="integer" column="completed" nullable="true"/>
+    <many-to-one field="performer" target-entity="InzPerformer">
       <join-columns>
-        <join-column name="author" referenced-column-name="id"/>
+        <join-column name="performer" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="category" target-entity="InzCategory">
+    <many-to-one field="offer" target-entity="InzAd">
       <join-columns>
-        <join-column name="category" referenced-column-name="id"/>
+        <join-column name="offer" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

@@ -1,3 +1,8 @@
+inz_performer:
+    resource: "@InzPerformerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 inz_category:
     resource: "@InzCategoryBundle/Controller/"
     type:     annotation
@@ -22,7 +27,6 @@ inz_user:
     resource: "@InzUserBundle/Controller/"
     type:     annotation
     prefix:   /
-
 
 app:
     resource: "@AppBundle/Controller/"
