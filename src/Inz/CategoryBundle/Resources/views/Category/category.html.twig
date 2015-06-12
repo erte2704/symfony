@@ -11,7 +11,7 @@
 	{% for element in entities %}
         <article>
               <header>
-                <a href="{{ path('link_offer', { 'id': element.id }) }}">{{element.title}}</a>
+                <a href="{{ path('link_ad', { 'id': element.id }) }}">{{element.title}}</a>
               </header>
             
               <section id="category">
@@ -23,7 +23,7 @@
               </section>
               
               <footer>
-                <a href="{{ path('link_offer', { 'id': element.id }) }}">Więcej...</a>
+                <a href="{{ path('link_ad', { 'id': element.id }) }}">Więcej...</a>
               </footer>
         </article>
 	{% endfor %}

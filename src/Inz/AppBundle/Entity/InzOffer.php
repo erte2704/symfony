@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * InzOffer
  *
- * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_performance_inz_performer1_idx", columns={"performer"}), @ORM\Index(name="fk_inz_offer_performance_inz_offer1_idx", columns={"offer"})})
+ * @ORM\Table(name="inz_offer", indexes={@ORM\Index(name="fk_inz_offer_performance_inz_performer1_idx", columns={"performer"}), @ORM\Index(name="fk_inz_offer_performance_inz_offer1_idx", columns={"ad"})})
  * @ORM\Entity
  */
 class InzOffer
@@ -27,6 +27,13 @@ class InzOffer
      * @ORM\Column(name="price", type="integer", nullable=true)
      */
     private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @var string
@@ -54,10 +61,10 @@ class InzOffer
      *
      * @ORM\ManyToOne(targetEntity="InzAd")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="offer", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="ad", referencedColumnName="id")
      * })
      */
-    private $offer;
+    private $ad;
 
     /**
      * @var \InzPerformer
@@ -102,6 +109,29 @@ class InzOffer
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return InzOffer
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -174,26 +204,26 @@ class InzOffer
     }
 
     /**
-     * Set offer
+     * Set ad
      *
-     * @param \Inz\AppBundle\Entity\InzAd $offer
+     * @param \Inz\AppBundle\Entity\InzAd $ad
      * @return InzOffer
      */
-    public function setOffer(\Inz\AppBundle\Entity\InzAd $offer = null)
+    public function setAd(\Inz\AppBundle\Entity\InzAd $ad = null)
     {
-        $this->offer = $offer;
+        $this->ad = $ad;
 
         return $this;
     }
 
     /**
-     * Get offer
+     * Get ad
      *
      * @return \Inz\AppBundle\Entity\InzAd 
      */
-    public function getOffer()
+    public function getAd()
     {
-        return $this->offer;
+        return $this->ad;
     }
 
     /**

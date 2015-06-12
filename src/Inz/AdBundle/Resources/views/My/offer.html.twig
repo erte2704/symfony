@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+{% block content_title %}Moje ofery{% endblock %}
+
+{% block content %}
+	{% if entities is iterable %}
+        <ul>
+        {% for entity in entities %}
+            <li><a href="{{ path('link_ad', { 'id': entity.ad.id }) }}">{{ entity.ad.title }}</a></li>
+        {% endfor %}
+        <ul>
+    {% else %}
+    	Nie dodałeś jeszcze żadnej oferty do ogłoszenia.
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,8 @@
+inz_ad:
+    resource: "@InzAdBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 inz_performer:
     resource: "@InzPerformerBundle/Controller/"
     type:     annotation
@@ -10,11 +15,6 @@ inz_category:
 
 inz_app:
     resource: "@InzAppBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-inz_offer:
-    resource: "@InzOfferBundle/Controller/"
     type:     annotation
     prefix:   /
 

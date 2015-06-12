@@ -20,10 +20,10 @@ class AppKernel extends Kernel
 			new FOS\UserBundle\FOSUserBundle(),
             new Inz\UserBundle\InzUserBundle(),
             new Inz\FrontBundle\InzFrontBundle(),
-            new Inz\OfferBundle\InzOfferBundle(),
             new Inz\AppBundle\InzAppBundle(),
             new Inz\CategoryBundle\InzCategoryBundle(),
             new Inz\PerformerBundle\InzPerformerBundle(),
+            new Inz\AdBundle\InzAdBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

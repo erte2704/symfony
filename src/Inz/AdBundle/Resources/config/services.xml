@@ -6,7 +6,7 @@
 
     <!--
     <services>
-        <service id="inz_offer.example" class="Inz\OfferBundle\Example">
+        <service id="inz_ad.example" class="Inz\AdBundle\Example">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

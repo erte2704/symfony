@@ -213,3 +213,30 @@ section#category_list ul li a{
 	font-size: 24px;
 	font-weight: bold;
 }
+
+section#add_offer .offer ul{
+	border-bottom: #F90 medium solid;
+	padding: 1em 0;
+}
+section#add_offer .offer ul li:nth-child(1){
+	display: table;
+	background-color: #F90;
+	border-radius: 0.5em;
+	margin: 0.5em;
+}
+section#add_offer .offer ul li{
+	list-style: none;
+	padding: 0.8em;	
+}
+section#add_offer .offer a{
+	border-radius: 0.5em;
+	display: inline-block;
+	border: #F90 thin solid;
+	padding: 0.8em;	
+}
+section#add_offer .offer a:hover{
+	background-color: #F90;
+	color: #FFF;
+}
+	
+	

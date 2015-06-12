@@ -1,0 +1,17 @@
+
+<section id="add_offer">
+	<h3>Lista ofert</h3>
+    <div class="offer"> 
+    	{% for offer in offers %}
+            <ul>
+                <li>Dodano przez: {{ offer.performer.name }} {{ offer.performer.surname }}</li>
+                <li>Przewidywana cena: {{ offer.price }} PLN</li>
+                <li>Opis realizacji: {{ offer.description }}</li>
+                <li>
+                <a href="#">Wyślij wiadomość</a>
+                <a href="#">Akceptuj</a>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+</section>

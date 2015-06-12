@@ -1,0 +1,15 @@
+
+<section id="add_offer">
+	<h3>Dodaj ofertę</h3>
+    <div class="offer">    
+    	{% if form is iterable %}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        {% else %}
+        	Dodałeś oferte do tego ogłoszenia.
+            <p>Cena: {{ form.price }} PLN</p>
+            <p>Opis: {{ form.description }}</p>
+        {% endif %}
+	</div>
+</section>

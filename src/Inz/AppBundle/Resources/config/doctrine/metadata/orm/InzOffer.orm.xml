@@ -3,12 +3,13 @@
   <entity name="InzOffer" table="inz_offer">
     <indexes>
       <index name="fk_inz_offer_performance_inz_performer1_idx" columns="performer"/>
-      <index name="fk_inz_offer_performance_inz_offer1_idx" columns="offer"/>
+      <index name="fk_inz_offer_performance_inz_offer1_idx" columns="ad"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="price" type="integer" column="price" nullable="true"/>
+    <field name="description" type="text" column="description" nullable="true"/>
     <field name="location" type="string" column="location" length="255" nullable="true"/>
     <field name="accept" type="integer" column="accept" nullable="true"/>
     <field name="completed" type="integer" column="completed" nullable="true"/>
@@ -17,9 +18,9 @@
         <join-column name="performer" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="offer" target-entity="InzAd">
+    <many-to-one field="ad" target-entity="InzAd">
       <join-columns>
-        <join-column name="offer" referenced-column-name="id"/>
+        <join-column name="ad" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

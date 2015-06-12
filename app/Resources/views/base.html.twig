@@ -14,9 +14,11 @@
             <header id="header">Usługi
                 <nav id="menu">                	
                     <ul class="navigation">
+                    	{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li>
                             <a href="/symfony/web/app_dev.php/register">Rejestracja</a>
                         </li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('link_home') }}">Home</a>
                         </li>
@@ -43,10 +45,10 @@
  			 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div>
                 	<ul>
-                        <li><a href="{{ path('link_add_offer') }}">Dodaj ogłoszenie</a></li>
+                        <li><a href="{{ path('link_ad_add') }}">Dodaj ogłoszenie</a></li>
                         <li><a href="{{ path('link_personal') }}">Moje dane</a></li>
-                        <li><a href="#">Moje ogłoszenia</a></li>
-                        <li><a href="#">Moje oferty</a></li>
+                        <li><a href="{{ path('link_my_ad') }}">Moje ogłoszenia</a></li>
+                        <li><a href="{{ path('link_my_offer') }}">Moje oferty</a></li>
                         <li><a href="#">Wiadomości</a></li>
                 	</ul>
                 </div>  
